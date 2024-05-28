@@ -1,5 +1,3 @@
-import { LargeArr } from "../useMemoTest/LargeArr";
-
 export default function IndexPage(){
     return (
     <div>
