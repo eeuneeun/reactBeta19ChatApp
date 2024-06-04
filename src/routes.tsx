@@ -2,7 +2,7 @@ import { lazy } from "react";
 import GlobalLayout from "./pages/_layout";
 
 const Index = lazy(() => import("./pages/index"));
-const PoroductsIndex = lazy(() => import("./pages/products/index"));
+const ChatIndex = lazy(() => import("./pages/chat/index"));
 
 export const routes = [
   {
@@ -10,12 +10,12 @@ export const routes = [
     element: <GlobalLayout />,
     children: [
       { path: "/", element: <Index /> },
-      { path: "/products", element: <PoroductsIndex /> },
+      { path: "/chat", element: <ChatIndex /> },
     ],
   },
 ];
 
 export const pages = [
   { route: "/" },
-  { route: "/products" },
+  { route: "/chat" },
 ];

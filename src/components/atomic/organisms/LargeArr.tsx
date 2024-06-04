@@ -1,14 +1,12 @@
 import * as React from 'react';
 
-export interface ILargeArrProps {
-}
-
-export function LargeArr (props: ILargeArrProps) {
+// # useMemo 테스트를 하기위한 함수
+export function LargeArr () {
     const [arr, setArr] = React.useState([0]) 
   
     // 베열에 숫자를 넣는 함수
     async function pushNumber() {
-        let tmpArr = []
+        const tmpArr = []
         for(let i=1; i <= 10000 ; i++){
             tmpArr.push(i)
             setArr([
@@ -25,7 +23,7 @@ export function LargeArr (props: ILargeArrProps) {
     async function exopensiveCalculate(arr:number[], number:number){
       await pushNumber()
       
-      await arr.map((item, idx:number)=>{
+      await arr.map((item)=>{
         const result = item + number
         console.log("add", result)
       })
@@ -42,6 +40,7 @@ export function LargeArr (props: ILargeArrProps) {
             <li key={item+idx}> {item} </li>
         ))
       }
+      {plusNumberOne}
     </ul>
   );
 }

@@ -1,7 +1,9 @@
 import { useRoutes } from 'react-router-dom';
 import { routes } from './routes';
+import { Socket } from 'socket.io-client';
 
-const App = () => {
+function App(){
+  Socket
   const elem = useRoutes(routes)
   return elem
 }
