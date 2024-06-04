@@ -1,9 +1,9 @@
 import { Chat } from "../../components/atomic/template/chat"
 
-export default function ProductList(){
+export default function Index(){
     return (
-    <div>
-        src/pages/products/index.tsx 페이지입니다.
+    <div className="chat">
+        <h2>Chat</h2>
        <Chat />
     </div>
     )

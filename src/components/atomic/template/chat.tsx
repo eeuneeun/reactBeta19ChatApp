@@ -11,8 +11,6 @@ export function Chat (props: IChatProps) {
       
     },[])
     return (
-        <div>
-            <SocketConneter />
-        </div>
+        <SocketConneter />
     );
 }

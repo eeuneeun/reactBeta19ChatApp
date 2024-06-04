@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useEffect, useState } from 'react';
+import React, { ReactEventHandler, useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client";
 import { ClientToServerEvents, ServerToClientEvents } from '../../../types/socket';
 
@@ -27,27 +27,27 @@ function SocketConneter() {
     };
   }, []);
 
-  const sendMessage = () => {
+  function sendMessage(event : React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     socket.emit('chat message', message);
     setMessage('');
   };
 
-  return (
-    <div className="App">
-      <h1>Socket.IO Chat</h1>
-      <div>
+  return (<>
+      <div className='codebox'>
         {messages.map((msg, index) => (
           <div key={index}>{msg}</div>
         ))}
       </div>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={sendMessage}>Send</button>
-    </div>
-  );
+      <form action="" onSubmit={(event)=>sendMessage(event)}>
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button >Send</button>
+      </form>
+    </>);
 }
 
 export default SocketConneter;
