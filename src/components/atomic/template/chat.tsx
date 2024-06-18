@@ -1,15 +1,10 @@
-import * as React from 'react';
 import SocketConneter from './socket';
 
 export interface IChatProps {
 }
 
-export function Chat (props: IChatProps) {
-    console.log(props)
-    React.useEffect(()=>{
-    
-      
-    },[])
+// # 채팅 UI 템플릿
+export function Chat () {
     return (
         <SocketConneter />
     );

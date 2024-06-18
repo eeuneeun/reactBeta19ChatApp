@@ -1,10 +1,10 @@
 // src/App.js
-import React, { ReactEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { io, Socket } from "socket.io-client";
 import { ClientToServerEvents, ServerToClientEvents } from '../../../types/socket';
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
-    'http://localhost:3001',{
+    'http://localhost:3000',{
     transports : ['websocket'],
     withCredentials : true,
     extraHeaders: {
@@ -18,18 +18,18 @@ function SocketConneter() {
 
   useEffect(() => {
     // namespace type 에러, 작동에는 문제없음
-    socket.on('chat message', (msg:string) => {
+    socket.on('chat', (msg:string) => {
         setMessages((prevMessages) => [...prevMessages, msg]);
     });
 
     return () => {
-      socket.off('chat message');
+      socket.off('chat');
     };
   }, []);
 
   function sendMessage(event : React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    socket.emit('chat message', message);
+    socket.emit('chat', message);
     setMessage('');
   };
 
